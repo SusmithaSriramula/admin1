@@ -1,19 +1,21 @@
-import React from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
-import AdminLayout from '../layouts/AdminLayout'
-import DashboardOverview from '../pages/DashboardOverview'
-import ReporterList from '../pages/ReporterList'
-import ReporterDetail from '../pages/ReporterDetail'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import AdminLayout from "../layouts/AdminLayout";
+import Dashboard from "../pages/Dashboard";
+import ReporterList from "../pages/ReporterList";
+import ReporterDetail from "../pages/ReporterDetail";
+import UserManagement from "../pages/UserManagement"; // ✅ Make sure this exists
 
-export default function AppRoutes(){
+export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<AdminLayout />}>
-        <Route index element={<DashboardOverview />} />
+        <Route index element={<Dashboard />} />
         <Route path="reporters" element={<ReporterList />} />
         <Route path="reporters/:id" element={<ReporterDetail />} />
+        <Route path="user-profile" element={<UserManagement />} /> {/* ✅ Added */}
       </Route>
-      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
-  )
+  );
 }
+
